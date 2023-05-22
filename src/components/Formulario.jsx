@@ -13,6 +13,12 @@ const Formulario = () => {
       //limpia el input
       setTarea('');
     }
+
+    const borrarTarea = (nombreTarea) =>{
+      let tareasFiltrada = tareas.filter((itemTarea)=> itemTarea !==nombreTarea)
+      setTareas(tareasFiltrada);
+    }
+
   return (
     <section>
       <Form onSubmit={handleSubmit}>
@@ -23,7 +29,7 @@ const Formulario = () => {
         </Button>
         </Form.Group>
       </Form>
-      <ListaTareas tareas={tareas}></ListaTareas>
+      <ListaTareas tareas={tareas} borrarTarea = {borrarTarea}></ListaTareas>
     </section>
   );
 };
