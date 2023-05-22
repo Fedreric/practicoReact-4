@@ -10,6 +10,7 @@ const Formulario = () => {
       e.preventDefault();
       //crea un nuevo array con los datos que ya posee y agrega uno nuevo al final
       setTareas([...tareas,tarea])
+      //limpia el input
       setTarea('');
     }
   return (
@@ -22,7 +23,7 @@ const Formulario = () => {
         </Button>
         </Form.Group>
       </Form>
-      <ListaTareas></ListaTareas>
+      <ListaTareas tareas={tareas}></ListaTareas>
     </section>
   );
 };
