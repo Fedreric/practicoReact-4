@@ -11,7 +11,10 @@ Conciste en una lista de tareas, donde podemos crearlas y eliminarlas. Como part
 ```bash
 git clone https://github.com/Fedreric/practicoReact-4.git
 ```
->**EJECUTAR:** 1. npm install 2.npm run dev 
+>**EJECUTAR:** 
+- npm install
+- npm run dev 
+- https://practicoreact-4y5-fede39i.netlify.app/
 
 ## Autor 👨‍💻
  Federico Luciano Ledesma [GitHub](https://github.com/Fedreric)
