@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 
 const Formulario = () => {
     const [tarea, setTarea] = useState('');
-    let tareasLS = JSON.parse(localStorage.getItem('listaTareas')) || [];
-    const [tareas, setTareas] = useState(tareasLS);
+    // let tareasLS = JSON.parse(localStorage.getItem('listaTareas')) || [];
+    const [tareas, setTareas] = useState([]);
     //aqui creo las funciones
     useEffect(()=>{
-      localStorage.setItem('listaTareas',JSON.stringify(tareas));
-    },[tareas])
+     
+    },[])
     const handleSubmit = (e) =>{
       e.preventDefault();
       //crea un nuevo array con los datos que ya posee y agrega uno nuevo al final
