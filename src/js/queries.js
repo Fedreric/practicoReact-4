@@ -30,8 +30,8 @@ const URL_TAREAS = import.meta.env.VITE_API_TAREAS;
 export const obtenerTareas = async () =>{
     try{
         const respuesta = await fetch(URL_TAREAS);
-        const listaProductos = await respuesta.json();
-        return listaProductos;
+        const listaTareas = await respuesta.json();
+        return listaTareas;
     }catch(e){
         console.log(e); 
     }
@@ -46,9 +46,9 @@ export const obtenerProducto = async (id) =>{
     }
 }
 
-export const consultaBorrarProducto = async (id) =>{
+export const consultaBorrarTarea = async (id) =>{
     try{
-        const respuesta = await fetch(`${URL_PRODUCTO}/${id}`,{
+        const respuesta = await fetch(`${URL_TAREAS}/${id}`,{
             method:"DELETE"
         });
         return respuesta;
@@ -56,14 +56,14 @@ export const consultaBorrarProducto = async (id) =>{
         console.log(e); 
     }
 }
-export const consultaCrearProducto = async (producto) =>{
+export const consultaCrearTarea = async (tarea) =>{
     try{
-        const respuesta = await fetch(URL_PRODUCTO,{
+        const respuesta = await fetch(URL_TAREAS,{
             method:"POST",
             headers:{
                 "Content-Type":"application/json"
             },
-            body: JSON.stringify(producto)
+            body: JSON.stringify(tarea)
         });
         return respuesta;
     }catch(e){

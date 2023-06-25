@@ -1,5 +1,12 @@
 {
-    "tareas": [
-      { "id": 1, "tarea": "json-server"}
-    ]
-  }
+  "tareas": [
+    {
+      "tarea": "que pasa loco",
+      "id": 1
+    },
+    {
+      "tarea": "sjajsa",
+      "id": 2
+    }
+  ]
+}

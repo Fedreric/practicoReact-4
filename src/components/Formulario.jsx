@@ -1,33 +1,53 @@
 import {Button, Form} from 'react-bootstrap';
 import ListaTareas from './ListaTareas';
 import { useState, useEffect } from 'react';
+import { obtenerTareas, consultaBorrarTarea, consultaCrearTarea } from "../js/queries";
+import { useForm } from "react-hook-form";
 
 const Formulario = () => {
-    const [tarea, setTarea] = useState('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+  const [tarea, setTarea] = useState('');
+  const [tareas, setTareas] = useState([]);
     // let tareasLS = JSON.parse(localStorage.getItem('listaTareas')) || [];
-    const [tareas, setTareas] = useState([]);
     //aqui creo las funciones
     useEffect(()=>{
-     
+      obtenerTareas().then((respuesta)=>{
+        setTareas(respuesta)
+      })
     },[])
-    const handleSubmit = (e) =>{
-      e.preventDefault();
-      //crea un nuevo array con los datos que ya posee y agrega uno nuevo al final
-      setTareas([...tareas,tarea])
-      //limpia el input
-      setTarea('');
+
+    const onSubmit = (tarea) =>{
+      consultaCrearTarea(tarea).then((respuesta)=>{
+        obtenerTareas().then((respuesta)=>{
+          setTareas(respuesta)
+        })
+        reset()
+      });
     }
 
-    const borrarTarea = (nombreTarea) =>{
-      let tareasFiltrada = tareas.filter((itemTarea)=> itemTarea !==nombreTarea)
-      setTareas(tareasFiltrada);
+    const borrarTarea = (idTarea) =>{
+      consultaBorrarTarea(idTarea).then((respuesta)=>{
+        obtenerTareas().then((respuesta)=>{
+          setTareas(respuesta)
+        })
+      })
     }
 
   return (
     <section>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3 d-flex" controlId="tarea">
-          <Form.Control type="text" placeholder="Ingrese una tarea" onChange={(e)=>setTarea(e.target.value)} value={tarea}/>
+          <Form.Control type="text" placeholder="Ingrese una tarea" {...register("tarea", {
+              required: "ingresa una tarea",
+            })}/>
+            <Form.Text className="text-danger fst-italic">
+            {errors.tarea?.message}
+          </Form.Text>
         <Button variant="primary" type="submit" className='mx-1'>
           Agregar
         </Button>
