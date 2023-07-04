@@ -11,7 +11,6 @@ const Formulario = () => {
     formState: { errors },
     reset,
   } = useForm();
-  const [tarea, setTarea] = useState('');
   const [tareas, setTareas] = useState([]);
     // let tareasLS = JSON.parse(localStorage.getItem('listaTareas')) || [];
     //aqui creo las funciones
@@ -22,7 +21,7 @@ const Formulario = () => {
     },[])
 
     const onSubmit = (tarea) =>{
-      consultaCrearTarea(tarea).then((respuesta)=>{
+      consultaCrearTarea(tarea).then(()=>{
         obtenerTareas().then((respuesta)=>{
           setTareas(respuesta)
         })
@@ -31,7 +30,7 @@ const Formulario = () => {
     }
 
     const borrarTarea = (idTarea) =>{
-      consultaBorrarTarea(idTarea).then((respuesta)=>{
+      consultaBorrarTarea(idTarea).then(()=>{
         obtenerTareas().then((respuesta)=>{
           setTareas(respuesta)
         })

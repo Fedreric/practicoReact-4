@@ -36,15 +36,6 @@ export const obtenerTareas = async () =>{
         console.log(e); 
     }
 }
-export const obtenerProducto = async (id) =>{
-    try{
-        const respuesta = await fetch(`${URL_PRODUCTO}/${id}`);
-        const producto = await respuesta.json();
-        return producto;
-    }catch(e){
-        console.log(e); 
-    }
-}
 
 export const consultaBorrarTarea = async (id) =>{
     try{
@@ -70,15 +61,15 @@ export const consultaCrearTarea = async (tarea) =>{
         console.log(e); 
     }
 }
-export const consultaEditarProducto = async (producto,id) =>{
+export const consultaEditarTarea = async (tarea,id) =>{
     try{
-        console.log(producto)
-        const respuesta = await fetch(URL_PRODUCTO+"/"+id,{
+        console.log(tarea)
+        const respuesta = await fetch(URL_TAREAS+"/"+id,{
             method:"PUT",
             headers:{
                 "Content-Type":"application/json"
             },
-            body: JSON.stringify(producto)
+            body: JSON.stringify(tarea)
         });
         return respuesta;
     }catch(e){
