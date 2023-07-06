@@ -51,7 +51,6 @@ const Formulario = () => {
     }
 
     const editarTarea = (idTarea) =>{
-      console.log(`id de tarea en editar ${idTarea}`)
       obtenerTarea(idTarea).then((respuesta)=>{
         setValue('tarea',respuesta.tarea)
          setTareaEditId(respuesta._id)
