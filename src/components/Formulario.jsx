@@ -13,7 +13,7 @@ const Formulario = () => {
     setValue
   } = useForm();
   const [tareas, setTareas] = useState([]);
-  const [tareaEditId, setTareaEditId] = useState('');
+  const [tareaEditId, setTareaEditId] = useState("");
   const [buttonState, setButtonState] = useState(true)
     // let tareasLS = JSON.parse(localStorage.getItem('listaTareas')) || [];
     //aqui creo las funciones
@@ -51,20 +51,13 @@ const Formulario = () => {
     }
 
     const editarTarea = (idTarea) =>{
+      console.log(`id de tarea en editar ${idTarea}`)
       obtenerTarea(idTarea).then((respuesta)=>{
         setValue('tarea',respuesta.tarea)
-         setTareaEditId(respuesta.id)
+         setTareaEditId(respuesta._id)
         setButtonState(false)
       })
     }
-
-    // const handleEdit = (tarea, tareaEditId) => {
-    //   consultaEditarTarea(tarea, tareaEditId).then(()=>{
-    //     obtenerTareas().then((respuesta)=>{
-    //       setTareas(respuesta)
-    //     })
-    //   })
-    // }
 
   return (
     <section>
