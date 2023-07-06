@@ -36,7 +36,15 @@ export const obtenerTareas = async () =>{
         console.log(e); 
     }
 }
-
+export const obtenerTarea = async (id) => {
+    try {
+      const respuesta = await fetch(`${URL_TAREAS}/${id}`);
+      const tarea = await respuesta.json();
+      return tarea;
+    } catch (e) {
+      console.log(e);
+    }
+  };
 export const consultaBorrarTarea = async (id) =>{
     try{
         const respuesta = await fetch(`${URL_TAREAS}/${id}`,{
